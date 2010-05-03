@@ -19,5 +19,5 @@ AuthType WebAuth
 require privgroup stanford:stanford
 </Files>
 
-
+More information on this setup (assumes you are using a Stanford instance): https://techcommons.stanford.edu/topics/mediawiki/anonymous-read-webauth-editing-mediawiki
 
