@@ -1,0 +1,23 @@
+The following are files in use at Stanford to integrate WebAuth (our authentication system) with MediaWiki. The integration is based on the Auth_remoteuser.php extension [ http://www.mediawiki.org/wiki/Extension:AutomaticREMOTE_USER ].
+
+To protect a MediaWiki instance (both read / edit) with WebAuth, install the Auth_remoteuser.php extension below and add the following lines to LocalSettings.php:
+
+require_once("extensions/Auth_remoteuser.php");
+$wgAuth = new Auth_remoteuser();
+
+Add an .htaccess file with the appropriate permissions:
+
+AuthType WebAuth
+require privgroup stanford:stanford
+
+To protect a MediaWiki instance from anonymous editing only, but allow read from anonymous users, install both the Auth_remoteuser.php extension and the WebAuth.php extension. Copy the login.php file to the installation's root directory. If you are not using this with a common code base, remove all lines up until require_once('extensions/Auth_remoteuser.php');
+
+Then, add an .htaccess file with the appropriate permissions for the login.php file:
+
+<Files login.php>
+AuthType WebAuth
+require privgroup stanford:stanford
+</Files>
+
+
+
